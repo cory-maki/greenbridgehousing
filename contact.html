@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contact Green Bridge Community Housing | Sheffield</title>
+<meta name="description" content="Contact Green Bridge Community Housing in Sheffield about supported accommodation, referrals, partnerships or community projects across four regions."/>
+<link rel="canonical" href="https://greenbridgehousing.netlify.app/contact.html"/>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png"/>
+<link rel="apple-touch-icon" href="images/favicon.png"/>
+<meta name="theme-color" content="#16213a"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Green Bridge Community Housing"/>
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:title" content="Contact Green Bridge Community Housing | Sheffield"/>
+<meta property="og:description" content="Contact Green Bridge Community Housing in Sheffield about supported accommodation, referrals, partnerships or community projects across four regions."/>
+<meta property="og:image" content="https://greenbridgehousing.netlify.app/images/og-image.jpg"/>
+<meta property="og:url" content="https://greenbridgehousing.netlify.app/contact.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://greenbridgehousing.netlify.app/#organization",
+   "name": "Green Bridge Community Housing",
+   "alternateName": "GBCH",
+   "description": "Green Bridge Community Housing is a not-for-profit company providing supported accommodation and person-centred support for adults aged 18 and over. Founded in 2018 and headquartered in Sheffield, it operates across South Yorkshire, West Yorkshire, the West Midlands and Bedfordshire.",
+   "url": "https://greenbridgehousing.netlify.app/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://greenbridgehousing.netlify.app/images/logo.jpg"
+   },
+   "image": "https://greenbridgehousing.netlify.app/images/hero.jpg",
+   "slogan": "Your bridge to a brighter future",
+   "foundingDate": "2018",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sheffield",
+    "addressRegion": "South Yorkshire",
+    "addressCountry": "GB"
+   },
+   "areaServed": [
+    {
+     "@type": "AdministrativeArea",
+     "name": "South Yorkshire"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "West Yorkshire"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "West Midlands"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Bedfordshire"
+    }
+   ],
+   "knowsAbout": [
+    "Supported accommodation",
+    "Person-centred support",
+    "Mental health support",
+    "Independent living skills"
+   ],
+   "employee": [
+    {
+     "@type": "Person",
+     "name": "Isac Musa",
+     "jobTitle": "Director"
+    },
+    {
+     "@type": "Person",
+     "name": "Rory Powell",
+     "jobTitle": "Director"
+    }
+   ],
+   "sameAs": [
+    "https://greenbridgehousing.org/",
+    "https://www.facebook.com/Greenbridgecommunityhousing/",
+    "https://www.linkedin.com/company/green-bridge-community-housing/posts/",
+    "https://www.instagram.com/greenbridgehousing/",
+    "https://www.youtube.com/@GreenBridgeCommunityHousing"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://greenbridgehousing.netlify.app/#website",
+   "url": "https://greenbridgehousing.netlify.app/",
+   "name": "Green Bridge Community Housing",
+   "publisher": {
+    "@id": "https://greenbridgehousing.netlify.app/#organization"
+   },
+   "inLanguage": "en-GB"
+  },
+  {
+   "@type": "ContactPage",
+   "@id": "https://greenbridgehousing.netlify.app/contact.html#webpage",
+   "url": "https://greenbridgehousing.netlify.app/contact.html",
+   "name": "Contact Green Bridge Community Housing | Sheffield",
+   "isPartOf": {
+    "@id": "https://greenbridgehousing.netlify.app/#website"
+   },
+   "about": {
+    "@id": "https://greenbridgehousing.netlify.app/#organization"
+   }
+  }
+ ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/style.css"/>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+  if(typeof supabase==='undefined')return;
+  const _sb=supabase.createClient('https://aowblircaymwuymcmllh.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvd2JsaXJjYXltd3V5bWNtbGxoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIzMzExMjcsImV4cCI6MjA2NzkwNzEyN30.qS7jxVwu83zEYMvxNo7C_2dtVrSZ6wYIFiNtoN69UkQ');
+  const _cid='Green Bridge Housing';
+  async function loadSBLinks(){
+    const[{data:soc,error:e1},{data:news,error:e2}]=await Promise.all([
+      _sb.from('social_media').select('*').eq('client_id',_cid),
+      _sb.from('news_links').select('*').eq('client_id',_cid)
+    ]);
+    if(e1)console.error('Error loading social media:',e1);
+    if(e2)console.error('Error loading news:',e2);
+    const render=(ids,data)=>ids.forEach(id=>{
+      const el=document.getElementById(id);
+      if(!el||!data)return;
+      el.innerHTML='';
+      data.forEach(l=>{
+        const a=document.createElement('a');
+        a.href=l.url;a.target='_blank';a.rel='noopener noreferrer';a.title=l.name;
+        a.innerHTML='<img src="'+l.icon+'" alt="'+l.name+'" style="width:30px;height:30px;border-radius:4px"/>';
+        el.appendChild(a);
+      });
+    });
+    render(['sml-soc-contact'],soc);
+    render(['sml-news-contact'],news);
+  }
+  document.addEventListener('DOMContentLoaded',loadSBLinks);
+})();
+</script>
+</head>
+<body>
+
+<!-- ══ NAV ═══════════════════════════════════════════════════════ -->
+<nav id="main-nav">
+  <a class="nav-logo" href="/">Green Bridge<span> Community Housing</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a class="active" href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══ PAGE HERO ═════════════════════════════════════════════════ -->
+<div class="cp-hero pg-hero">
+  <p class="eyebrow">Get in touch</p>
+  <h1>Contact Green Bridge Community Housing</h1>
+  <p class="pg-sub">Questions for Green Bridge Community Housing about supported accommodation, referrals or partnership work in Sheffield and across its four regions can be sent using the form below.</p>
+</div>
+
+<!-- ══ CONTACT CARD ══════════════════════════════════════════════ -->
+<div class="cc-wrap">
+  <div class="cc">
+    <div class="fp">
+      <h2>Send a message</h2>
+      <p class="fp-sub">Messages are read by the GBCH team in Sheffield.</p>
+      <form class="cf2" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact"/>
+        <p class="hp-field"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <div><label for="c-name">Full name</label><input id="c-name" name="name" type="text" autocomplete="name" placeholder="Your name" required/></div>
+        <div><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" placeholder="email@example.com" required/></div>
+        <div><label for="c-msg">Message</label><textarea id="c-msg" name="message" placeholder="Your message" required></textarea></div>
+        <button class="btn-cf2" type="submit">Send message</button>
+      </form>
+    </div>
+    <div class="ci">
+      <div class="ci-title">GBCH in Sheffield</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SOCIAL + PRESS ACCORDION ══════════════════════════════════ -->
+<div class="acc-section" style="background:var(--off);padding-top:3rem">
+  <div class="acc-wrap">
+    <button class="acc-btn" onclick="tog(this,'s-contact')">Follow GBCH on social media <span class="chevron">&#8964;</span></button>
+    <div class="acc-body" id="s-contact"><div id="sml-soc-contact" class="social-media-list"></div></div>
+    <button class="acc-btn" onclick="tog(this,'n-contact')">GBCH in the press <span class="chevron">&#8964;</span></button>
+    <div class="acc-body" id="n-contact"><div id="sml-news-contact" class="social-media-list"></div></div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Green Bridge Community Housing. All rights reserved. &nbsp;&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+function tog(btn,id){
+  const c=document.getElementById(id),open=c.classList.contains('open');
+  document.querySelectorAll('.acc-body').forEach(e=>e.classList.remove('open'));
+  document.querySelectorAll('.acc-btn').forEach(e=>e.classList.remove('open'));
+  if(!open){c.classList.add('open');btn.classList.add('open');}
+}
+</script>
+</body>
+</html>
