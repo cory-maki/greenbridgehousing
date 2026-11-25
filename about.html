@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Green Bridge Community Housing | Supported Accommodation | Sheffield</title>
+<meta name="description" content="About Green Bridge Community Housing: a Sheffield not-for-profit supported accommodation provider since 2018, led by directors Isac Musa and Rory Powell."/>
+<link rel="canonical" href="https://greenbridgehousing.netlify.app/about.html"/>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png"/>
+<link rel="apple-touch-icon" href="images/favicon.png"/>
+<meta name="theme-color" content="#16213a"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Green Bridge Community Housing"/>
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:title" content="About Green Bridge Community Housing | Supported Accommodation | Sheffield"/>
+<meta property="og:description" content="About Green Bridge Community Housing: a Sheffield not-for-profit supported accommodation provider since 2018, led by directors Isac Musa and Rory Powell."/>
+<meta property="og:image" content="https://greenbridgehousing.netlify.app/images/og-image.jpg"/>
+<meta property="og:url" content="https://greenbridgehousing.netlify.app/about.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://greenbridgehousing.netlify.app/#organization",
+   "name": "Green Bridge Community Housing",
+   "alternateName": "GBCH",
+   "description": "Green Bridge Community Housing is a not-for-profit company providing supported accommodation and person-centred support for adults aged 18 and over. Founded in 2018 and headquartered in Sheffield, it operates across South Yorkshire, West Yorkshire, the West Midlands and Bedfordshire.",
+   "url": "https://greenbridgehousing.netlify.app/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://greenbridgehousing.netlify.app/images/logo.jpg"
+   },
+   "image": "https://greenbridgehousing.netlify.app/images/hero.jpg",
+   "slogan": "Your bridge to a brighter future",
+   "foundingDate": "2018",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sheffield",
+    "addressRegion": "South Yorkshire",
+    "addressCountry": "GB"
+   },
+   "areaServed": [
+    {
+     "@type": "AdministrativeArea",
+     "name": "South Yorkshire"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "West Yorkshire"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "West Midlands"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Bedfordshire"
+    }
+   ],
+   "knowsAbout": [
+    "Supported accommodation",
+    "Person-centred support",
+    "Mental health support",
+    "Independent living skills"
+   ],
+   "employee": [
+    {
+     "@type": "Person",
+     "name": "Isac Musa",
+     "jobTitle": "Director"
+    },
+    {
+     "@type": "Person",
+     "name": "Rory Powell",
+     "jobTitle": "Director"
+    }
+   ],
+   "sameAs": [
+    "https://greenbridgehousing.org/",
+    "https://www.facebook.com/Greenbridgecommunityhousing/",
+    "https://www.linkedin.com/company/green-bridge-community-housing/posts/",
+    "https://www.instagram.com/greenbridgehousing/",
+    "https://www.youtube.com/@GreenBridgeCommunityHousing"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://greenbridgehousing.netlify.app/#website",
+   "url": "https://greenbridgehousing.netlify.app/",
+   "name": "Green Bridge Community Housing",
+   "publisher": {
+    "@id": "https://greenbridgehousing.netlify.app/#organization"
+   },
+   "inLanguage": "en-GB"
+  },
+  {
+   "@type": "AboutPage",
+   "@id": "https://greenbridgehousing.netlify.app/about.html#webpage",
+   "url": "https://greenbridgehousing.netlify.app/about.html",
+   "name": "About Green Bridge Community Housing | Supported Accommodation | Sheffield",
+   "isPartOf": {
+    "@id": "https://greenbridgehousing.netlify.app/#website"
+   },
+   "mainEntity": {
+    "@id": "https://greenbridgehousing.netlify.app/#organization"
+   }
+  }
+ ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/style.css"/>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+  if(typeof supabase==='undefined')return;
+  const _sb=supabase.createClient('https://aowblircaymwuymcmllh.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvd2JsaXJjYXltd3V5bWNtbGxoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIzMzExMjcsImV4cCI6MjA2NzkwNzEyN30.qS7jxVwu83zEYMvxNo7C_2dtVrSZ6wYIFiNtoN69UkQ');
+  const _cid='Green Bridge Housing';
+  async function loadSBLinks(){
+    const[{data:soc,error:e1},{data:news,error:e2}]=await Promise.all([
+      _sb.from('social_media').select('*').eq('client_id',_cid),
+      _sb.from('news_links').select('*').eq('client_id',_cid)
+    ]);
+    if(e1)console.error('Error loading social media:',e1);
+    if(e2)console.error('Error loading news:',e2);
+    const render=(ids,data)=>ids.forEach(id=>{
+      const el=document.getElementById(id);
+      if(!el||!data)return;
+      el.innerHTML='';
+      data.forEach(l=>{
+        const a=document.createElement('a');
+        a.href=l.url;a.target='_blank';a.rel='noopener noreferrer';a.title=l.name;
+        a.innerHTML='<img src="'+l.icon+'" alt="'+l.name+'" style="width:30px;height:30px;border-radius:4px"/>';
+        el.appendChild(a);
+      });
+    });
+    render(['sml-soc-about'],soc);
+    render(['sml-news-about'],news);
+  }
+  document.addEventListener('DOMContentLoaded',loadSBLinks);
+})();
+</script>
+</head>
+<body>
+
+<!-- ══ NAV ═══════════════════════════════════════════════════════ -->
+<nav id="main-nav">
+  <a class="nav-logo" href="/">Green Bridge<span> Community Housing</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a class="active" href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══ PAGE HERO ═════════════════════════════════════════════════ -->
+<div class="pg-hero">
+  <p class="eyebrow">About the organisation</p>
+  <h1>Green Bridge Community Housing</h1>
+  <p class="pg-sub">A Sheffield-based not-for-profit company providing supported accommodation and person-centred support across four regions of England since 2018.</p>
+</div>
+
+<!-- ══ PROFILE CARD ══════════════════════════════════════════════ -->
+<div class="pc-wrap">
+  <div class="pc">
+    <div class="pc-ph"><img src="images/hero.jpg" alt="Green Bridge Community Housing emblem"/></div>
+    <div>
+      <div class="pc-nm">Green Bridge Community Housing</div>
+      <div class="pc-rl">Not-for-profit supported accommodation provider</div>
+      <div class="pc-lc">Sheffield, South Yorkshire, UK</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT SECTIONS + SIDEBAR ══════════════════════════════════ -->
+<div class="am-wrap">
+  <div class="am-inner">
+    <div>
+
+      <div class="csec">
+        <p class="cey">The organisation</p>
+        <h2>A not-for-profit supported accommodation provider rooted in Sheffield</h2>
+        <p>Green Bridge Community Housing is a not-for-profit company providing supported accommodation and structured, person-centred support to adults aged 18 and over. Established in 2018 and headquartered in Sheffield, GBCH has grown from its South Yorkshire base into a provider with services across South Yorkshire, West Yorkshire, the West Midlands and Bedfordshire, working with multiple local authorities and partner organisations along the way. Each of those regions has its own network of local authorities, services and community partners.</p>
+        <p>Its purpose is practical: to help people rebuild independence through a stable home and consistent support. That aim is summed up in the organisation’s line, “Your bridge to a brighter future”, and it shapes how services are designed and delivered, from the way homes are matched to people to the skills support offered before someone moves on. The same long-term emphasis guides decisions in every region where GBCH operates. Service information and updates are published on <a href="https://greenbridgehousing.org/" target="_blank" rel="noopener">GBCH’s main website</a>.</p>
+      </div>
+
+      <div class="csec">
+        <p class="cey">The support model</p>
+        <h2>Accommodation with support infrastructure behind it</h2>
+        <p>At GBCH, a home is the starting point rather than the whole service. Each person has an individual support plan developed with a housing and support team, and the organisation runs in-house maintenance and cleaning services so that properties stay safe and well kept. Support also covers the practical skills needed to live independently, so that the time someone spends in supported accommodation builds towards a home of their own. Because maintenance and cleaning are handled in-house, the condition of each home stays the organisation’s direct responsibility.</p>
+        <p>Green Bridge offers both shared and self-contained homes, matched to the needs and circumstances of each person. A fuller explanation of <a href="what-is-supported-accommodation.html">what supported accommodation actually means</a> sets out why that structure matters for long-term stability, and why it differs from a temporary shelter placement. The distinction is central to how the organisation describes its work to commissioners, referral partners and the public.</p>
+      </div>
+
+      <div class="csec">
+        <p class="cey">People supported</p>
+        <h2>Adults working towards stability and independence</h2>
+        <p>Green Bridge Community Housing works with adults whose circumstances include homelessness, refugee status, leaving prison or care, experience of domestic abuse or trafficking, and mental and physical health challenges. Much of this work takes place alongside local authorities, social services, probation services and health professionals. Information about the individuals supported is treated with care, and the organisation’s public communication focuses on the systems and services involved rather than on personal stories shared without consent. The common thread across these very different circumstances is a need for stability, structure and a realistic route to independence.</p>
+        <p>The organisation’s services include work with refugees and asylum seekers in Sheffield and Leeds. In Sheffield, its <a href="mental-health-support-sheffield.html">specialist mental health support service</a> works alongside health and social care professionals to support people progressing towards recovery and independence, adding a more focused layer of support to the same housing foundations used across all GBCH homes.</p>
+      </div>
+
+      <div class="csec">
+        <p class="cey">Partnerships and civic engagement</p>
+        <h2>A partner to councils, health services and the voluntary sector</h2>
+        <p>GBCH’s network reaches across local authorities, social services, probation services, health professionals and voluntary organisations in each region where it operates. The organisation has welcomed visits from local MPs, mayors and councillors, and its <a href="local-authorities-health-professionals.html">cross-sector partnership approach</a> reflects a view that stable housing outcomes depend on several services working together rather than in parallel. The range of regions, local authorities and partner organisations involved is itself a measure of the institutional trust the organisation has built since 2018.</p>
+        <p>Staff development is part of the same commitment. A guest speaker programme brings in specialists on mental health, homelessness, safeguarding, trauma-informed support and neurodiversity, and awareness training programmes, including ADHD awareness training, extend that learning across teams. Professional news from the organisation is shared on <a href="https://www.linkedin.com/company/green-bridge-community-housing/posts/" target="_blank" rel="noopener">the Green Bridge LinkedIn page</a>.</p>
+      </div>
+
+      <div class="csec">
+        <p class="cey">Community and leadership</p>
+        <h2>Community programmes and steady leadership</h2>
+        <p>Beyond its housing services, Green Bridge Community Housing runs and supports community projects: fundraising for school uniform costs, contributions to children’s hospital charities, a weekly soup kitchen and food outreach in Bedfordshire, art therapy partnerships with Keech Hospice and the University of Bedfordshire, and events for Refugee Week and South Asian Heritage Month. Seasonal work includes the Christmas Shoebox Appeal and a sponsored snowflake at Sheffield Children’s Hospital, with updates posted on <a href="https://www.facebook.com/Greenbridgecommunityhousing/" target="_blank" rel="noopener">GBCH’s Facebook page</a>. These projects are specific and local, and they connect the organisation’s housing work with schools, hospitals, universities and community groups in the places where it operates.</p>
+        <p>Directors Isac Musa and Rory Powell have led GBCH since its incorporation in 2018, with a stated focus on sustainable and responsive service development. That continuity of leadership has accompanied the organisation’s growth from Sheffield into four regions, and it has kept the same person-centred model at the centre of the work as services have expanded.</p>
+      </div>
+
+    </div>
+
+    <aside class="sidebar-facts">
+      <div class="sb-box">
+        <div class="sb-title">Quick Facts</div>
+        <div class="fr"><span class="fl">Known as</span><span class="fv">GBCH</span></div>
+        <div class="fr"><span class="fl">Type</span><span class="fv">Not-for-profit company</span></div>
+        <div class="fr"><span class="fl">Founded</span><span class="fv">2018</span></div>
+        <div class="fr"><span class="fl">Headquarters</span><span class="fv">Sheffield, South Yorkshire</span></div>
+        <div class="fr"><span class="fl">Regions</span><span class="fv">South Yorkshire, West Yorkshire, West Midlands, Bedfordshire</span></div>
+        <div class="fr"><span class="fl">Directors</span><span class="fv">Isac Musa, Rory Powell</span></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ══ SOCIAL + PRESS ACCORDION ══════════════════════════════════ -->
+<div class="acc-section" style="background:var(--off)">
+  <div class="acc-wrap">
+    <button class="acc-btn" onclick="tog(this,'s-about')">Follow GBCH on social media <span class="chevron">&#8964;</span></button>
+    <div class="acc-body" id="s-about"><div id="sml-soc-about" class="social-media-list"></div></div>
+    <button class="acc-btn" onclick="tog(this,'n-about')">GBCH in the press <span class="chevron">&#8964;</span></button>
+    <div class="acc-body" id="n-about"><div id="sml-news-about" class="social-media-list"></div></div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Green Bridge Community Housing. All rights reserved. &nbsp;&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+function tog(btn,id){
+  const c=document.getElementById(id),open=c.classList.contains('open');
+  document.querySelectorAll('.acc-body').forEach(e=>e.classList.remove('open'));
+  document.querySelectorAll('.acc-btn').forEach(e=>e.classList.remove('open'));
+  if(!open){c.classList.add('open');btn.classList.add('open');}
+}
+</script>
+</body>
+</html>
